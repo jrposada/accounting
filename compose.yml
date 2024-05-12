@@ -1,0 +1,36 @@
+services:
+  accounting_backend:
+    image: jrposada/accounting-backend:latest
+    restart: unless-stopped
+    volumes:
+      - frontend_data:/app/data # TODO implement logger and target here
+    ports:
+      - '${API_PORT}:${API_PORT}'
+
+  accounting_frontend:
+    image: jrposada/accounting-frontend:latest
+    restart: unless-stopped
+    volumes:
+      - backend_data:/var/log/nginx
+    ports:
+      - '${VITE_PORT}:80'
+
+  accounting_db:
+    extends:
+      file: compose.db.yml
+      service: accounting_db
+
+  pgadmin4:
+    extends:
+      file: compose.db.yml
+      service: pgadmin4
+
+volumes:
+  backend_data:
+    external: false
+  frontend_data:
+    external: false
+  pgadmin4_data:
+    external: false
+  db_data:
+    external: false

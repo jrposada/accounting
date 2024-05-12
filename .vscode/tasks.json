@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "backend",
+      "problemMatcher": [],
+      "label": "npm: dev - backend",
+      "detail": "npm run start:db && nodemon -w src -x tsx src/main.ts"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "frontend",
+      "problemMatcher": [],
+      "label": "npm: dev - frontend",
+      "detail": "vite"
+    },
+    {
+      "label": "npm: dev",
+      "dependsOn": ["npm: dev - backend", "npm: dev - frontend"]
+    }
+  ]
+}

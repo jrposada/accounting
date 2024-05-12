@@ -1,0 +1,40 @@
+services:
+  accounting_backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.backend
+    restart: unless-stopped
+    volumes:
+      - frontend_data:/app/data
+    ports:
+      - '${API_PORT}:${API_PORT}'
+
+  accounting_frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.frontend
+    restart: unless-stopped
+    volumes:
+      - backend_data:/app/data # TODO: point to nginx logs folder
+    ports:
+      - '${VITE_PORT}:80'
+
+  accounting_db:
+    extends:
+      file: compose.db.yml
+      service: accounting_db
+
+  pgadmin4:
+    extends:
+      file: compose.db.yml
+      service: pgadmin4
+
+volumes:
+  backend_data:
+    external: false
+  frontend_data:
+    external: false
+  pgadmin4_data:
+    external: false
+  postgres_data:
+    external: false

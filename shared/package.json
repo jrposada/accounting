@@ -1,0 +1,22 @@
+{
+  "name": "accounting-shared",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrposada/accounting.git"
+  },
+  "scripts": {
+    "format": "prettier . --write",
+    "lint-staged": "lint-staged",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
+    "lint:tsc": "tsc --noEmit",
+    "lint": "npm run lint:eslint && npm run lint:prettier"
+  },
+  "author": {
+    "email": "jrposada.dev@gmail.com",
+    "name": "Javier Rodriguez Posada"
+  },
+  "type": "module"
+}

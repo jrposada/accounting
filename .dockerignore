@@ -1,0 +1,23 @@
+# Editor
+.editorconfig
+.eslintrc.cjs
+.vscode
+
+# Git
+.git
+.gitignore
+
+# NodeJS
+.nvmrc
+node_modules
+dist
+
+# Docker compose files.
+.dockerignore
+compose.db.yml
+compose.prod.yml
+compose.yml
+Dockerfile
+
+# Doc
+README.md

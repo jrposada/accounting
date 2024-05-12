@@ -1,0 +1,31 @@
+{
+  "name": "accounting",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrposada/accounting.git"
+  },
+  "workspaces": [
+    "backend",
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "publish:docker": ". ./scripts/publish.sh",
+    "deploy:local": "docker compose --file ./compose.local.yml up --build --detach",
+    "start": "docker compose --file compose.yml up --build --detach",
+    "stop": "docker compose --file compose.yml stop"
+  },
+  "author": {
+    "email": "jrposada.dev@gmail.com",
+    "name": "Javier Rodriguez Posada"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "eslint": "^8.56.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "typescript": "<5.2.0"
+  }
+}

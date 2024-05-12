@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "fontsource",
+    "hstore",
+    "Htmls",
+    "languagedetector",
+    "linebreak",
+    "postbuild",
+    "roboto",
+    "tanstack",
+    "webp"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "i18n-ally.localesPaths": ["frontend/src/localization"]
+}

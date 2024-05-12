@@ -1,0 +1,54 @@
+{
+  "name": "accounting-backend",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrposada/accounting.git"
+  },
+  "scripts": {
+    "dev": "npm run start:db && nodemon -w src -x tsx src/main.ts",
+    "format": "prettier . --write",
+    "lint-staged": "lint-staged",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
+    "lint:tsc": "tsc --noEmit",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "db:migrate:down": "sequelize-cli db:migrate:undo",
+    "db:migrate:up": "sequelize-cli db:migrate",
+    "db:migration:generate": "sequelize-cli model:generate --attributes placeholder:string --name",
+    "db:reset": "npm run db:seed:undo && npm run db:migrate:down && npm run db:migrate:up && npm run db:seed:all",
+    "db:seed:all": "sequelize-cli db:seed:all",
+    "db:seed:generate": "sequelize-cli seed:generate --name",
+    "db:seed:undo": "sequelize-cli db:seed:undo",
+    "sequelize-cli": "sequelize-cli",
+    "start:db": "docker compose --file ../compose.db.yml --env-file ./.env up --detach",
+    "start": "NODE_ENV=production tsx src/main.ts"
+  },
+  "author": {
+    "email": "jrposada.dev@gmail.com",
+    "name": "Javier Rodriguez Posada"
+  },
+  "type": "module",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.35.2",
+    "shared": "../shared",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
+    "tsx": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.6",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.6",
+    "@types/pg": "^8.10.9",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
+    "nodemon": "^3.0.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}

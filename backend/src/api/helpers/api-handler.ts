@@ -20,7 +20,10 @@ export function apiHandler<TQuery, TData, TResponseData>(
         const origin = request.get('origin');
 
         try {
-            const { data, query } = validate(request.query, request.body);
+            const { data, query } = validate(
+                request.query,
+                request.file ?? request.body,
+            );
             const result = await handler(query, data);
             sendSuccess(origin, response, result);
         } catch (error) {

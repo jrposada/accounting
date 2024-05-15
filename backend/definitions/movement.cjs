@@ -1,16 +1,23 @@
-// const { DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = {
     MODEL_NAME: 'Movements',
     DEFINITION: {
-        // index: {
-        //     allowNull: false,
-        //     type: DataTypes.STRING,
-        //     unique: true,
-        // },
-        // production: {
-        //     allowNull: true,
-        //     type: DataTypes.ARRAY(DataTypes.STRING),
-        // },
+        concept: {
+            allowNull: false,
+            type: DataTypes.STRING,
+        },
+        import: {
+            allowNull: false,
+            type: DataTypes.FLOAT,
+        },
+        transactionDate: {
+            allowNull: false,
+            type: DataTypes.DATE,
+        },
+        valueDate: {
+            allowNull: false,
+            type: DataTypes.DATE,
+        },
     },
 };

@@ -1,4 +1,4 @@
 export type ApiResponseData<TData> = {
-    data: TData;
+    data?: TData;
     status: number;
 };

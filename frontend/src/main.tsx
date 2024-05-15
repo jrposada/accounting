@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './i18n';
 import { rootRoute } from './root-route';
-import { routes } from './routes/routes';
+import { routes } from './routes';
 
 const defaultTheme = createTheme();
 

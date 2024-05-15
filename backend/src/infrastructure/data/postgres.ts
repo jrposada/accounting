@@ -59,11 +59,11 @@ export class Postgres<TEntityType extends string> {
         }
     }
 
-    async create<TData extends Optional<any, string> | undefined>(
+    async create<TData extends Optional<any, string>>(
         type: TEntityType,
-        dao: TData,
-    ): Promise<Model> {
-        const dbData = await this.#entities[type].dao.create(dao);
+        daos: TData[],
+    ): Promise<Model[]> {
+        const dbData = await this.#entities[type].dao.bulkCreate(daos);
         return dbData;
     }
 

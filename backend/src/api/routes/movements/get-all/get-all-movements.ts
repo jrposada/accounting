@@ -10,7 +10,7 @@ function validate(
     return { data: undefined, query: new Query(query) };
 }
 
-async function handler(query: Query, _data: undefined) {
+async function handler(query: Query) {
     const service = new MovementService();
     await service.initialize();
 

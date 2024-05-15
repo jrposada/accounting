@@ -1,4 +1,4 @@
-import { MovementEntity } from 'shared/models/movement.ts';
+import { Movement, MovementEntity } from 'shared/models/movement.ts';
 import { Query } from 'shared/models/query.ts';
 import {
     MOVEMENT_DAO_MAPPER,
@@ -42,6 +42,13 @@ export class MovementService {
 
     async get(query: Query): Promise<MovementEntity[]> {
         const dbData = await this.#db.query('movement', query);
+        const data = dbData.map((item) => toMovementEntity(item));
+
+        return data;
+    }
+
+    async post(movements: Movement[]): Promise<MovementEntity[]> {
+        const dbData = await this.#db.create('movement', movements);
         const data = dbData.map((item) => toMovementEntity(item));
 
         return data;

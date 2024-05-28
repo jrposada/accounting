@@ -47,7 +47,7 @@ export class MovementService {
         return data;
     }
 
-    async post(movements: Movement[]): Promise<MovementEntity[]> {
+    async create(movements: Movement[]): Promise<MovementEntity[]> {
         const dbData = await this.#db.create('movement', movements);
         const data = dbData.map((item) => toMovementEntity(item));
 

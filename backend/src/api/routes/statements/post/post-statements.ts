@@ -1,6 +1,9 @@
 import { Request, Router } from 'express';
 import { apiHandler } from '../../../helpers/api-handler.ts';
-import { StatementService } from '../../../../services/statement-service.ts';
+import {
+    StatementService,
+    VALID_MIMETYPES,
+} from '../../../../services/statement-service.ts';
 import multer from 'multer';
 import { ApiError } from '../../../helpers/api-error.ts';
 
@@ -14,8 +17,8 @@ function validate(
         throw new ApiError(400, 'No file uploaded');
     }
 
-    if (data.mimetype !== 'text/csv') {
-        throw new ApiError(400, 'File is not a valid CSV');
+    if (!VALID_MIMETYPES.includes(data.mimetype)) {
+        throw new ApiError(400, `Invalid file format ${data.mimetype}`);
     }
 
     return { data, query: undefined };

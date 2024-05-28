@@ -11,8 +11,9 @@ export class PdfService {
 
             let match;
             while ((match = transactionPattern.exec(data.text)) !== null) {
+                const importValue = `${match[5] === 'H' ? '+' : '-'}${match[4].replace(/\./g, '').replace(/,/g, '.')}`;
                 results.push({
-                    import: match[4].replace(/\./g, '').replace(/,/g, '.'),
+                    import: importValue,
                     concept: match[3].trim(),
                     transactionDate: match[2],
                     valueDate: match[1],

@@ -1,6 +1,9 @@
 {
   "translation": {
-    "home": "Home",
+    "navigation": {
+      "home": "Home",
+      "movements": "Movements"
+    },
     "movements-table": {
       "headers": {
         "valueDate": "Value Date",

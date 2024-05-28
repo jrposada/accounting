@@ -1,6 +1,7 @@
 import { createRoute } from '@tanstack/react-router';
-import { rootRoute } from './root-route';
 import HomeRoute from './features/home-route';
+import MovementsRoute from './features/movements-route';
+import { rootRoute } from './root-route';
 
 const homeRoute = createRoute({
     getParentRoute: () => rootRoute,
@@ -8,12 +9,10 @@ const homeRoute = createRoute({
     component: HomeRoute,
 });
 
-const aboutRoute = createRoute({
+const movementsRoute = createRoute({
     getParentRoute: () => rootRoute,
-    path: '/about',
-    component: function About() {
-        return <div className="p-2">Hello from About!</div>;
-    },
+    path: '/movements',
+    component: MovementsRoute,
 });
 
-export const routes = [homeRoute, aboutRoute];
+export const routes = [homeRoute, movementsRoute];

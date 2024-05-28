@@ -1,5 +1,13 @@
 {
   "translation": {
-    "home": "Home"
+    "home": "Home",
+    "movements-table": {
+      "headers": {
+        "valueDate": "Value Date",
+        "transactionDate": "Transaction Date",
+        "concept": "Concept",
+        "import": "Import"
+      }
+    }
   }
 }

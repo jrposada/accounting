@@ -12,7 +12,24 @@ type MovementsTableProps = {
 const MovementsTable: FunctionComponent<MovementsTableProps> = ({ data }) => {
     const components = useMemo(() => ({}), []);
 
-    const [colDefs] = useState<AgGridReactProps<Movement>['columnDefs']>([]);
+    const [colDefs] = useState<AgGridReactProps<Movement>['columnDefs']>([
+        {
+            field: 'valueDate',
+            headerName: t('movements-table.headers.valueDate'),
+        },
+        {
+            field: 'transactionDate',
+            headerName: t('movements-table.headers.transactionDate'),
+        },
+        {
+            field: 'concept',
+            headerName: t('movements-table.headers.concept'),
+        },
+        {
+            field: 'import',
+            headerName: t('movements-table.headers.import'),
+        },
+    ]);
 
     const autoSizeStrategy: AgGridReactProps<Movement>['autoSizeStrategy'] = {
         type: 'fitCellContents',

@@ -1,6 +1,6 @@
 import { Request, Router } from 'express';
 import { Query } from 'shared/models/query.ts';
-import { MovementService } from '../../../../services/movement-service.ts';
+import { MovementService } from '../../../../infrastructure/data/movement-service.ts';
 import { apiHandler } from '../../../helpers/api-handler.ts';
 
 function validate(

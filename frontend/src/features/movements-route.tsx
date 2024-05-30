@@ -1,5 +1,10 @@
-import { Container } from '@mui/material';
-import { FunctionComponent, useState } from 'react';
+import { Button, Container } from '@mui/material';
+import {
+    ChangeEventHandler,
+    FunctionComponent,
+    MouseEventHandler,
+    useState,
+} from 'react';
 import { Arguments } from 'shared/utils/arguments';
 import { useGetMovements } from '../core/api/get-movements/get-movements';
 import { usePostStatements } from '../core/api/post-statements/post-statements';
@@ -24,13 +29,13 @@ const MovementsRoute: FunctionComponent = () => {
     const { mutate: postStatements } = usePostStatements();
     const [file, setFile] = useState<File | null>(null);
 
-    const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onFileChange: ChangeEventHandler<HTMLInputElement> = (event) => {
         if (event.target.files) {
             setFile(event.target.files[0]);
         }
     };
 
-    const onFileUpload = () => {
+    const onFileUpload: MouseEventHandler = () => {
         if (!file) {
             return;
         }
@@ -52,7 +57,7 @@ const MovementsRoute: FunctionComponent = () => {
         >
             <h1>File Upload</h1>
             <input type="file" onChange={onFileChange} />
-            <button onClick={onFileUpload}>Upload</button>
+            <Button onClick={onFileUpload}>Upload</Button>
             <MovementsTable data={data} onFilterChange={handleFilterChange} />
         </Container>
     );

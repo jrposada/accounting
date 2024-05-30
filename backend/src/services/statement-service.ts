@@ -2,7 +2,7 @@ import { Movement } from 'shared/models/movement.ts';
 import { CsvService } from './csv-service.ts';
 import { ApiError } from '../api/helpers/api-error.ts';
 import moment from 'moment';
-import { MovementService } from './movement-service.ts';
+import { MovementService } from '../infrastructure/data/movement-service.ts';
 import { PdfService } from './pdf-service.ts';
 
 const DATE_PATTERN = 'DD-MM-YYYY';

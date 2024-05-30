@@ -4,10 +4,19 @@ import {
     MOVEMENT_DAO_MAPPER,
     movementDao,
     toMovementEntity,
-} from '../infrastructure/data/movement-dao.ts';
-import { Postgres } from '../infrastructure/data/postgres.ts';
+} from './movement-dao.ts';
+import { Postgres } from './postgres.ts';
+import { FindOptions } from 'sequelize';
 
 export class MovementService {
+    get client() {
+        return this.#db.client;
+    }
+
+    get dao() {
+        return this.#db.getDao('movement');
+    }
+
     readonly #db: Postgres<'movement'>;
 
     constructor() {
@@ -42,6 +51,13 @@ export class MovementService {
 
     async get(query: Query): Promise<MovementEntity[]> {
         const dbData = await this.#db.query('movement', query);
+        const data = dbData.map((item) => toMovementEntity(item));
+
+        return data;
+    }
+
+    async getRaw(query: FindOptions): Promise<MovementEntity[]> {
+        const dbData = await this.dao.findAll(query);
         const data = dbData.map((item) => toMovementEntity(item));
 
         return data;

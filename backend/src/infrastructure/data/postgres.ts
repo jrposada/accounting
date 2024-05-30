@@ -19,6 +19,10 @@ type Entities<TEntityType extends string> = Record<
 >;
 
 export class Postgres<TEntityType extends string> {
+    get client() {
+        return this.#client;
+    }
+
     readonly #client: Sequelize;
     readonly #entities: Readonly<Entities<TEntityType>>;
 
@@ -67,6 +71,10 @@ export class Postgres<TEntityType extends string> {
         return dbData;
     }
 
+    getDao(type: TEntityType) {
+        return this.#entities[type].dao;
+    }
+
     async query(type: TEntityType, query: Query): Promise<Model[]> {
         const entity = this.#entities[type];
 
@@ -112,7 +120,6 @@ export class Postgres<TEntityType extends string> {
             }
         });
 
-        console.log(dbQuery);
         const dbData = await entity.dao.findAll(dbQuery);
         return dbData;
     }

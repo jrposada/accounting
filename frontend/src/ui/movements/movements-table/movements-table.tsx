@@ -15,10 +15,12 @@ const MovementsTable: FunctionComponent<MovementsTableProps> = ({ data }) => {
     const [colDefs] = useState<AgGridReactProps<Movement>['columnDefs']>([
         {
             field: 'valueDate',
+            filter: 'agDateColumnFilter',
             headerName: t('movements-table.headers.valueDate'),
         },
         {
             field: 'transactionDate',
+            filter: 'agDateColumnFilter',
             headerName: t('movements-table.headers.transactionDate'),
         },
         {

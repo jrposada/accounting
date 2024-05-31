@@ -1,4 +1,6 @@
 export type Report = {
     period: string;
-    data: number[];
+    income: number;
+    expense: number;
+    growth: number;
 }[];

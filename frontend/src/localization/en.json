@@ -11,6 +11,13 @@
         "concept": "Concept",
         "import": "Import"
       }
+    },
+    "home": {
+      "report": {
+        "expense": "Expense",
+        "income": "Income",
+        "growth": "Growth"
+      }
     }
   }
 }

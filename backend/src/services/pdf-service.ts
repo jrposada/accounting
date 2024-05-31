@@ -1,7 +1,7 @@
 import pdf from 'pdf-parse';
 
 const transactionPattern =
-    / *(?:\d{2}-\d{2}-\d{2})* +(\d{2}-\d{2}-\d{2}) +(\d{2}-\d{2}-\d{2}) +\d+ +(.+?(?=\s\s)) +([\d,]+) ([DH])/g;
+    / *(?:\d{2}-\d{2}-\d{2})* +(\d{2}-\d{2}-\d{2}) +(\d{2}-\d{2}-\d{2}) +\d+ +(.+?(?=\s\s)) +([\d,\.]+) ([DH])/g;
 
 export class PdfService {
     static from(buffer: Buffer): Promise<Record<string, string>[]> {
